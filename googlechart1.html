@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Google Chart Toolsの練習</title>
+</head>
+
+<body>
+    
+
+    <div id="barchart_material" style="width: 900px; height: 500px;"></div>
+
+    
+    <script src="https://www.google.com/jsapi"></script>
+    <script>
+        
+        google.load('visualization', '1.1', {
+            'packages': ['bar'],
+            'language': 'ja'
+        });
+
+        
+        google.setOnLoadCallback(drawChart);
+
+        
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+          ['年', '愛知', '岐阜', '三重'],
+
+          ['2012', 8.4, 15.6, 13.2],
+          ['2013', 8.6, 14.8, 13.3],
+          ['2014', 8.5, 14.9, 13.8]
+        ]);
+
+            var options = {
+                chart: {
+                    title: '東海３県の県外就職率',
+                    subtitle: '2012-2014',
+                },
+                bars: 'horizontal', 
+            };
+
+            
+            var chart = new google.charts.Bar(document.getElementById('barchart_material'));
+
+        
+            chart.draw(data, google.charts.Bar.convertOptions(options));
+        }
+    </script>
+
+<p>東海３県の県外就職率のデータである</p>
+<p>東海３県で比べると愛知県は県内で就職する人が多い</p>
+<p>愛知県の率が低くなっているのを地元愛が深い人が多いと捉えることもできるが、ただ単に岐阜県や三重県より県内にある企業が多いからではないかとも考えられる</p>
+
+
+</body>
+
+
+</html>
